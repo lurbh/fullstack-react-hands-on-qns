@@ -8,7 +8,7 @@ function App() {
 
   return (
     <React.Fragment>
-    <button onClick={}>Press me</button>
+    <button onClick={pop}>Press me</button>
     </React.Fragment>
   );
 }

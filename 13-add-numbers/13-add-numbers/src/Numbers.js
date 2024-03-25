@@ -19,13 +19,7 @@ export default function Numbers () {
     }
 
     const addNumber = () => {
-        // 1. clone the allNumbers array in the state
-        const cloneNumbers = allNumbers.slice()
-
-        // 2. add the number to the back of the clone
-        cloneNumbers.push(number);
-
-        // 3. set the cloned array back into the state
+        const cloneNumbers = [...allNumbers,number]
         setAllNumbers(cloneNumbers);
         
     }

@@ -5,11 +5,25 @@ export default function AirQuality(){
     const [psi, setPsi] = useState(0);
 
     const getAirQualityText = () => {
-        return "undefined";
-      }
+      if(psi<= 50)
+        return "healthy";
+      else if(psi < 150)
+        return "moderate";
+      else if(psi < 200)
+        return "unhealthy";
+      else
+        return "hazardous";
+    }
     
     const getAirQualityColor = () => {
-    
+      if(psi<= 50)
+          return "green";
+        else if(psi < 150)
+          return "yellow";
+        else if(psi < 200)
+          return "orange";
+        else
+          return "red";
     }
     
 
@@ -24,7 +38,7 @@ export default function AirQuality(){
         </div>
         <h1>Air Quality</h1>
         <div id="air-quality" 
-             style={{color:'black'}}
+             style={{color:getAirQualityColor()}}
         >
             {getAirQualityText()}
         </div>

@@ -5,7 +5,6 @@ export default function Question() {
     const [answer, setAnswer] = useState("");
 
     const updateAnswer = (e) =>{
-      console.log(e);
       setAnswer(e.target.value);
     }
 

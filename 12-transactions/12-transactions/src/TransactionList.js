@@ -31,8 +31,36 @@ export default function TransactionList() {
         ]
     )
 
-    return <React.Fragment>
+    function getTransactionColor(type)
+    {
+        if(type === "debit")
+            return "red";
+        else if(type === "credit")
+            return "green";
+        else 
+            return "black"
+    }
 
-    </React.Fragment>
+    function renderTransaction(){
+        let renderList = [];
+        for(let t of transactions)
+        {
+            let fragment = (<>
+                <li style={{
+                    color : getTransactionColor(t.type)
+                }}>{t.name} - ${t.amount}</li>
+            </>);
+            renderList.push(fragment);
+        }
+        return renderList;
+    }
+
+    return (
+        <React.Fragment>
+            <ul>
+                {renderTransaction()}
+            </ul>
+        </React.Fragment>
+    )
   
 }

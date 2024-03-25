@@ -5,7 +5,7 @@ import TransactionList from './TransactionList'
 function App() {
   return (
     <div className="App">
-      
+      <TransactionList/>
     </div>
   );
 }

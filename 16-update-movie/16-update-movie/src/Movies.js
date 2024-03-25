@@ -18,26 +18,50 @@ export default function Movies(){
     )
     const [title, setTitle] = useState("");
     const [director, setDirector] = useState("");
+    const [isEditing, setIsEditing] = useState(false);
+    const [index, setindex] = useState(0);
  
+    function handleEdit(e)
+    {
+      setindex(parseInt(e.target.value));
+      if(isEditing)
+        setIsEditing(false);
+      else
+        setIsEditing(true);
+    }
+
+    function renderDisplay()
+    {
+      if(isEditing)
+        return "block";
+      else
+        return "none";
+    }
 
     function updateMovie() {
         // 1. create the updated movie object.
         // hint: replace the null below with the correct code
         // hint 2: where is the data for the new movie currently stored?
         let updatedMovie  = {
-            id: null,
-            title: null,
-            director: null
+            id: index,
+            title: title,
+            director: director
         }
 
         // 2. find the original index of the updated movie
+        let indexToEdit = movies.findIndex((value) => {
+          return value.id === index;
+        })
 
         // 3. clone the array
+        let clonedMovies = movies.slice();
 
         // 4. add the updated movie object back to its original index in
         // the array
+        clonedMovies.splice(indexToEdit,1,updatedMovie);
 
         // 5. set the cloned array back into the state
+        setMovies(clonedMovies);
     }
 
 
@@ -47,14 +71,14 @@ export default function Movies(){
           {movies.map(m => (
             <React.Fragment>
               <div class="movie">
-                <h1> {m.title} <button>Edit</button> </h1>
+                <h1> {m.title} <button onClick={handleEdit} value={m.id}>Edit</button> </h1>
                 <h2> Directed by {m.director} </h2>
               </div>
             </React.Fragment>
           ))}
         </div>
 
-        <div class="col" style={{display: "none"}}>
+        <div class="col" style={{display: renderDisplay()}}>
             <h3>Edit Movie</h3>
             <div>
                 <label>Movie Title:</label>

@@ -11,9 +11,23 @@ export default function GuestList() {
         ]
     )
 
+    function renderGuestList() {
+        let guestList = [];
+        for(let g of guests)
+        {
+            let listFragment = (<>
+                <li>{g}</li>
+            </>)
+            guestList.push(listFragment);
+        }
+        return guestList;
+    }
+
     return (
         <React.Fragment>
-
+            <ul>
+                {renderGuestList()}
+            </ul>
         </React.Fragment>
     )
 }

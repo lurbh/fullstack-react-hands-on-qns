@@ -9,14 +9,14 @@ export default function Movies() {
                 'title': 'Dune',
                 'author': 'Frank Herbert',
                 'genre': 'science-fiction',
-                'tags':['futuristic', 'classics']
+                'tags':['futuristic', 'classic']
             },
             {
                 'id': 102,
                 'title': 'The Lord of the Rings: The Fellowship of the Ring',
                 'author': 'J.R.R Tolkien',
                 'genre':'fantasy',
-                'tags':['door-stopper', 'trilogy']
+                'tags':['doorstopper', 'trilogy']
             }
         ]
     )

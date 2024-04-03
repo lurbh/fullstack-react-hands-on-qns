@@ -26,7 +26,7 @@ export default function GuestList() {
     return (
         <React.Fragment>
             <ul>
-                {renderGuestList()}
+                {!guests.length < 1 ? renderGuestList() : <p>Loading...</p> } 
             </ul>
         </React.Fragment>
     )

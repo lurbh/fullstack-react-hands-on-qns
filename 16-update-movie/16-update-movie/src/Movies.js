@@ -20,22 +20,23 @@ export default function Movies(){
     const [director, setDirector] = useState("");
     const [isEditing, setIsEditing] = useState(false);
     const [index, setindex] = useState(0);
- 
-    function handleEdit(e)
-    {
-      setindex(parseInt(e.target.value));
-      if(isEditing)
-        setIsEditing(false);
-      else
-        setIsEditing(true);
-    }
 
-    function renderDisplay()
+    function getMovie(id)
     {
-      if(isEditing)
-        return "block";
-      else
-        return "none";
+      for (const m of movies) {
+        if(m.id === id)
+          return m;
+      }
+      return null;
+    }
+ 
+    function handleEdit(id)
+    {
+      const movie = getMovie(id);
+      setindex(id);
+      setTitle(movie.title);
+      setDirector(movie.director);
+      setIsEditing(true);
     }
 
     function updateMovie() {
@@ -62,6 +63,8 @@ export default function Movies(){
 
         // 5. set the cloned array back into the state
         setMovies(clonedMovies);
+
+        setIsEditing(false);
     }
 
 
@@ -71,14 +74,14 @@ export default function Movies(){
           {movies.map(m => (
             <React.Fragment>
               <div class="movie">
-                <h1> {m.title} <button onClick={handleEdit} value={m.id}>Edit</button> </h1>
+                <h1> {m.title} <button onClick={() => handleEdit(m.id)} value={m.id}>Edit</button> </h1>
                 <h2> Directed by {m.director} </h2>
               </div>
             </React.Fragment>
           ))}
         </div>
 
-        <div class="col" style={{display: renderDisplay()}}>
+        <div class="col" style={{display: isEditing ? "block" : "none"}}>
             <h3>Edit Movie</h3>
             <div>
                 <label>Movie Title:</label>

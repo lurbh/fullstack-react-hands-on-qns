@@ -30,19 +30,19 @@ export default function Movies() {
     const handleInput = (e) => {
         const {value, name} = e.target;
         if(name === 'title')
-            setTitle(value)
+            setTitle(value);
         else if(name === 'author')
-            setAuthor(value)
+            setAuthor(value);
         else if(name === 'genre')
-            setGenre(value)
+            setGenre(value);
         else if(name === 'tags')
         {
             const {checked} = e.target;
             if(checked)
                 if(tagsList.length > 0)
-                    setTagsList([...tagsList,value])
+                    setTagsList([...tagsList,value]);
                 else
-                    setTagsList([value])
+                    setTagsList([value]);
             else
             {
                 let tagsarray = tagsList.filter((t) => t !== value);
@@ -88,14 +88,14 @@ export default function Movies() {
         setTitle(""); 
         setAuthor(""); 
         setGenre("");
-        setTagsList([])
+        setTagsList([]);
     }
 
     const displayEditBook = (id) => {
         setIndex(parseInt(id));
         setIsEditing(true);
         const bookToEdit = books.find((value) => {
-            return value.id === index;
+            return value.id === id;
         });
 
         setTitle(bookToEdit.title); 

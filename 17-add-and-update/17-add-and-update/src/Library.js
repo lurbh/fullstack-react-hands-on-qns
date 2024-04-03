@@ -114,7 +114,7 @@ export default function Movies() {
 
     const DeleteBook = (id) => {
         const indexToRemove = books.findIndex((value) => {
-            return value.id === index;
+            return value.id === id;
         }); 
         const clonedBooks = books.slice();
         clonedBooks.splice(indexToRemove,1);
